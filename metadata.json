@@ -1,0 +1,6 @@
+{
+  "name": "DialFlow",
+  "description": "Android calling queue and AI voice assistant that loads contact lists, launches the mobile dialer sequentially, and talks to contacts using real-time AI voice.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

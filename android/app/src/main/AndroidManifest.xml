@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+
+    <!-- Direct cellular dialing without manual confirmation per contact -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <!-- Detect when calls connect (OFFHOOK) and end (IDLE) for auto-advance -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- Two-way Gemini Live AI voice capture and speakerphone routing -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <!-- Optional import from Android phone Contacts -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <!-- Connect to DialFlow AI voice backend -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Keep sequential calling campaign alive during native phone call UI -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.DialFlow"
+        android:usesCleartextTraffic="true">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".telephony.AutoDialerService"
+            android:exported="false"
+            android:foregroundServiceType="microphone" />
+    </application>
+</manifest>
